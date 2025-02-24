@@ -4,11 +4,12 @@
   <img src="logo.png" width="200" alt="Project Logo">
 </p>
 
-------
-
+------------------------------------
 
 ## 📢 About This Project
 This repository contains an **SQL-based Retail Sales Data Analysis** project. It involves analyzing sales transactions to extract meaningful insights using SQL queries. The dataset includes details about product sales, pricing, customer behavior, and revenue trends.
+
+--------------------------------------
 
 ## 🎯 Objectives
 ✅ Perform data cleaning and transformation.  
@@ -62,10 +63,36 @@ CREATE TABLE retail_sales (
 
 ---
 
-## 🚀 Usage
-💡 Modify and test the queries in your preferred SQL environment.  
-📊 Extend the dataset by adding more sales transactions.  
-⚡ Optimize queries for better performance.  
+## 📝 Data Analysis & Business Key Problems
+----------------------------------------------------------------------------
+### Q.1 Write a SQL query to retrieve all columns for sales made on '2022-11-05
+ 
+#### SELECT * FROM retail_sales
+#### WHERE sale_date = '2022-11-05';
+------------------------------------------------
+### Q.2 Retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022
+#####        SELECT * FROM retail_sales
+#####        WHERE category='Clothing' 
+#####                               AND TO_CHAR(sale_date, 'YYYY-MM')='2022-11'
+#####                               AND quantiy>=4;
+
+----------------------------------------------------
+### Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
+##### SELECT category, SUM(total_sale) as total_sale,
+##### COUNT(*)AS Total_order
+##### FROM retail_sales
+##### GROUP BY category
+;
+--------------------------------------------------------
+### Q.4 Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.
+##### SELECT category, CAST(AVG(age)AS DECIMAL(10,2))as Average_age
+##### FROM retail_sales
+##### WHERE category='Beauty'
+##### group by category;
+
+------------------------------------
+
+
 
 
 
