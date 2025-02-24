@@ -64,14 +64,14 @@ CREATE TABLE retail_sales (
 ---
 
 ## 📝 Data Analysis & Business Key Problems
-----------------------------------------------------------------------------
+---------------------------
 
 1. **Write a SQL query to retrieve all columns for sales made on '2022-11-05:
  ```sql
 SELECT * FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
-------------------------------------------------
+---------------------------
 2. **Retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022:
 ```sql
 SELECT * FROM retail_sales
@@ -119,9 +119,9 @@ ORDER BY category;
 SELECT * FROM
 (
    SELECT
-      EXTRACT('year' FROM sale_date)AS year,
+            EXTRACT('year' FROM sale_date)AS year,
 	    EXTRACT('month' FROM sale_date)AS month,
-      CAST(AVG(total_sale) AS DECIMAL(10,2))AS Avg_sales,
+            CAST(AVG(total_sale) AS DECIMAL(10,2))AS Avg_sales,
 	    RANK() OVER (PARTITION BY EXTRACT('year' FROM sale_date) ORDER BY CAST(AVG(total_sale) AS DECIMAL(10,2))DESC)AS rank
 FROM retail_sales
 GROUP BY year,month
@@ -156,8 +156,8 @@ GROUP BY category;
 SELECT sale_time ,
     CASE 
         WHEN EXTRACT('hour' FROM sale_time)<12 THEN 'MORNING'
-	      WHEN EXTRACT('hour' FROM sale_time) BETWEEN 12 AND 17 THEN 'AFTERNOON'
-	  ELSE 'EVENING'
+        WHEN EXTRACT('hour' FROM sale_time) BETWEEN 12 AND 17 THEN 'AFTERNOON'
+    ELSE 'EVENING'
 END AS shift
 FROM retail_sales;
 
@@ -169,8 +169,8 @@ AS
 SELECT sale_time ,
     CASE 
          WHEN EXTRACT('hour' FROM sale_time)<12 THEN 'MORNING'
-	       WHEN EXTRACT('hour' FROM sale_time) BETWEEN 12 AND 17 THEN 'AFTERNOON'
-	  ELSE 'EVENING'
+         WHEN EXTRACT('hour' FROM sale_time) BETWEEN 12 AND 17 THEN 'AFTERNOON'
+    ELSE 'EVENING'
 END AS shift
 FROM retail_sales
 )
