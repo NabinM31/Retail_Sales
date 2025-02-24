@@ -83,6 +83,7 @@ CREATE TABLE retail_sales (
 ##### FROM retail_sales
 ##### GROUP BY category
 ;
+
 --------------------------------------------------------
 ### Q.4 Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.
 ##### SELECT category, CAST(AVG(age)AS DECIMAL(10,2))as Average_age
@@ -92,7 +93,18 @@ CREATE TABLE retail_sales (
 
 ------------------------------------
 
+### Q.5 Write a SQL query to find all transactions where the total_sale is greater than 1000.
+##### SELECT * FROM retail_sales
+##### WHERE total_sale>1000;
 
+--------------------------------------
+
+### Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
+##### SELECT gender,category, COUNT(transactions_id)AS total_transaction
+##### FROM retail_sales
+##### GROUP BY gender,category
+##### ORDER BY category;
+---------------------------------------
 
 
 
